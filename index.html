@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEXE Regedit - Completo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #111111;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 15px;
+            color: #111;
+        }
+
+        .brand-icon {
+            background: #111;
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .header-badge {
+            background: #f4f4f4;
+            border: 1px solid #eaeaea;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .hero-sub {
+            font-size: 13px;
+            color: #777;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .title-main {
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .title-main span {
+            color: #999;
+            display: block;
+        }
+
+        .description {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .compatibility-pill {
+            background: #111;
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .video-box {
+            background: #161616;
+            border-radius: 22px;
+            height: 210px;
+            position: relative;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 14px;
+        }
+
+        .video-icon-center {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 32px;
+        }
+
+        .preview-btn {
+            background: #f0f0f0;
+            color: #111;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            width: fit-content;
+            cursor: pointer;
+        }
+
+        .telegram-box {
+            background: #161616;
+            color: #fff;
+            border-radius: 22px;
+            padding: 20px;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .telegram-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #262626;
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .telegram-box h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            padding-right: 40px;
+        }
+
+        .telegram-box p {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.4;
+        }
+
+        .telegram-box p strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #777;
+            margin-bottom: 14px;
+        }
+
+        .params-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+/* Estilo para el movimiento automatico continuo */
+        .payment-scroll {
+            display: flex;
+            gap: 8px;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            position: relative;
+            margin-bottom: 16px; /* <-- Agrega esta línea para separar del botón */
+        }
+
+        .payment-track {
+            display: flex;
+            gap: 8px;
+            width: max-content;
+            animation: scrollAuto 15s linear infinite;
+        }
+
+        /* Animacion que mueve los elementos de derecha a izquierda infinitamente */
+        @keyframes scrollAuto {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        .payment-pill-item {
+            flex: 0 0 auto;
+            border: 1px solid #eaeaea;
+            background: #fafafa;
+            border-radius: 10px;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .param-card {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 22px;
+            padding: 20px;
+        }
+
+        .param-icon {
+            background: #f4f4f4;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .param-value {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 2px;
+        }
+
+        .param-label {
+            font-size: 13px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="brand">
+                <div class="brand-icon">⚡</div>
+                <span>SoyLogan</span>
+            </div>
+            <div class="header-badge">Android & iOS</div>
+        </div>
+
+        <!-- Hero Texts -->
+        <p class="hero-sub">Un solo acceso para Android & iOS</p>
+        <h1 class="title-main">
+            Maximo control.
+            <span>Android & iOS.</span>
+        </h1>
+        <p class="description">El mejor Regedit para Free Fire. Tu compra incluye los beneficios para ambas plataformas dentro de una sola pagina, con acceso inmediato y sin intermediarios.</p>
+
+        <!-- Compatibility Badge -->
+        <div class="compatibility-pill">
+            <span>⚡ Android 8 — 16+ · Sin root | iOS 11 — 26.5+ · Sin jailbreak</span>
+        </div>
+
+        <!-- Video Box -->
+        <div class="video-box">
+            <div class="video-icon-center">▶</div>
+            <button class="preview-btn">Vista previa</button>
+        </div>
+
+        <!-- Telegram Notice -->
+        <div class="telegram-box">
+            <div class="telegram-icon">✈️</div>
+            <h4>Requisito obligatorio: Telegram</h4>
+            <p>Antes de comprar, ten la <strong>app de Telegram descargada, instalada y con una cuenta activa</strong>. La entrega y el soporte se hacen por Telegram, igual que reciben sus beneficios <strong>mas de 1.000 clientes activos</strong> ahora mismo.</p>
+        </div>
+
+        <!-- Parameters Section -->
+        <p class="section-title">Parametros de ajuste</p>
+        <div class="params-grid">
+            <div class="param-card">
+                <div class="param-icon">◎</div>
+                <div class="param-value">70%</div>
+                <div class="param-label">Aimlock</div>
+            </div>
+            <div class="param-card">
+                <div class="param-icon">◻</div>
+                <div class="param-value">70%</div>
+                <div class="param-label">Aim assist</div>
+            </div>
+        </div>
+
+        <!-- Versiones compatibles -->
+        <p class="section-title">Versiones compatibles</p>
+        <div class="params-grid">
+            <div class="param-card">
+                <div style="font-size: 16px; margin-bottom: 8px;">🤖 Android</div>
+                <div style="font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px;">8 — 16+</div>
+                <div style="font-size: 11px; color: #777;">Sin root · Cualquier fabricante</div>
+            </div>
+            <div class="param-card">
+                <div style="font-size: 16px; margin-bottom: 8px;">🍎 iOS</div>
+                <div style="font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px;">11 — 26.5+</div>
+                <div style="font-size: 11px; color: #777;">Sin jailbreak · iPhone & iPad</div>
+            </div>
+        </div>
+
+        <!-- Incluido en tu compra -->
+        <p class="section-title">Incluido en tu compra</p>
+        <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 22px; padding: 6px 20px; margin-bottom: 28px;">
+            <div style="display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f2f2f2;">
+                <div style="background: #f4f4f4; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px;">★</div>
+                <span style="font-size: 14px; font-weight: 500; color: #222;">Certificados premium, libres de baneo</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f2f2f2;">
+                <div style="background: #f4f4f4; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px;">🛡️</div>
+                <span style="font-size: 14px; font-weight: 500; color: #222;">Sin blacklist, sin reinicio de rango</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f2f2f2;">
+                <div style="background: #f4f4f4; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px;">⚡</div>
+                <span style="font-size: 14px; font-weight: 500; color: #222;">Activacion inmediata dentro de Telegram</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px; padding: 14px 0;">
+                <div style="background: #f4f4f4; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px;">🔄</div>
+                <span style="font-size: 14px; font-weight: 500; color: #222;">Compatible con Android e iOS</span>
+            </div>
+        </div>
+
+        <!-- Estadisticas / Metricas -->
+        <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 22px; padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <span style="font-size: 28px; font-weight: 800; letter-spacing: -1px;">5 años</span>
+            <span style="font-size: 13px; color: #666; text-align: right; max-width: 180px;">de historial verificado en el mercado</span>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 22px; padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <span style="font-size: 28px; font-weight: 800; letter-spacing: -1px;">2.500+</span>
+            <span style="font-size: 13px; color: #666; text-align: right; max-width: 180px;">compras completadas y entregadas</span>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 22px; padding: 20px 24px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <span style="font-size: 28px; font-weight: 800; letter-spacing: -1px;">1.000+</span>
+            <span style="font-size: 13px; color: #666; text-align: right; max-width: 180px;">clientes activos recibiendo beneficios hoy</span>
+        </div>
+
+        <!-- Canales de referencias -->
+        <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 22px; padding: 18px 20px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="background: #f4f4f4; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px;">✈️</div>
+                <div>
+                    <div style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">Ver referencias — canal 1</div>
+                    <div style="font-size: 12px; color: #777;">Pagos verificables en Telegram</div>
+                </div>
+            </div>
+            <span style="color: #999; font-size: 14px;">↗</span>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 22px; padding: 18px 20px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="background: #f4f4f4; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px;">✈️</div>
+                <div>
+                    <div style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">Ver referencias — canal 2</div>
+                    <div style="font-size: 12px; color: #777;">Mas de 2.500 pagos verificables</div>
+                </div>
+            </div>
+            <span style="color: #999; font-size: 14px;">↗</span>
+        </div>
+
+        <!-- Como funciona (Inicio) -->
+        <p class="section-title">Como funciona</p>
+        
+        <div style="display: flex; gap: 16px; margin-bottom: 20px;">
+            <div style="background: #111; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">1</div>
+            <div>
+                <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Ten Telegram listo</h4>
+                <p style="font-size: 13px; color: #666; line-height: 1.4;">Descarga la app, instalala y ten una cuenta activa antes de pagar. Ahi se hace la entrega.</p>
+            </div>
+        </div>
+
+    <!-- (Aquí dejaremos abierto el contenedor para ir pegando las siguientes capturas) -->
+     <!-- Pasos 2, 3 y 4 -->
+        <div style="display: flex; gap: 16px; margin-bottom: 20px;">
+            <div style="background: #111; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">2</div>
+            <div>
+                <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Elige tu plan y paga</h4>
+                <p style="font-size: 13px; color: #666; line-height: 1.4;">Tarjeta, Apple Pay, Google Pay, Cash App y mas metodos segun el plan que elijas.</p>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 16px; margin-bottom: 20px;">
+            <div style="background: #111; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">3</div>
+            <div>
+                <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">No cierres la pagina del pago</h4>
+                <p style="font-size: 13px; color: #666; line-height: 1.4;">Manten abierta la pestana del checkout hasta que se confirme y recibas el acceso completo.</p>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 16px; margin-bottom: 28px;">
+            <div style="background: #111; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0;">4</div>
+            <div>
+                <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Acceso por Telegram</h4>
+                <p style="font-size: 13px; color: #666; line-height: 1.4;">Recibes el acceso en Telegram, igual que los mas de 1.000 clientes activos actuales.</p>
+            </div>
+        </div>
+
+        <!-- Planes -->
+        <p class="section-title"></p>
+
+        <!-- Cuadro de Plan 4 -->
+    <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 24px; padding: 24px; margin-bottom: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+            <div>
+                <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 5px 0;">Permanente</h2>
+                <p style="font-size: 14px; color: #666; margin: 0;">Descripción corta del plan</p>
+            </div>
+            <!-- Opcional: puedes quitar o poner la etiqueta POPULAR -->
+            <span style="background: #000; color: #fff; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 20px; letter-spacing: 0.5px;">AUTO APUNTADO BASICO</span>
+        </div>
+
+        <div style="font-size: 32px; font-weight: 900; margin-bottom: 20px;">
+            $13 <span style="font-size: 14px; font-weight: 600; color: #666;">USD</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; font-size: 14px; color: #333;">
+            <div>✓ Aimlock 75%</div>
+            <div>✓ Aimbot 75%</div>
+            <div>✓ Entrega inmediata por Whatsapp</div>
+            <div style="display: flex; align-items: center; gap: 8px; color: #888;">✕ No incluye actualizaciones</div>
+            </div>
+
+        <div style="font-size: 12px; color: #777; margin-bottom: 8px;">Metodos de pago</div>
+            <div class="payment-scroll">
+                <div class="payment-track">
+                    <!-- Grupo 1 -->
+                    <div class="payment-pill-item">Card</div>
+                    <div class="payment-pill-item">Pay</div>
+                    <div class="payment-pill-item">GPay</div>
+                    <div class="payment-pill-item">CashApp</div>
+                    <div class="payment-pill-item">Bank</div>
+                    <!-- Grupo 2 (Duplicado para bucle continuo) -->
+                    <div class="payment-pill-item">Card</div>
+                    <div class="payment-pill-item">Pay</div>
+                    <div class="payment-pill-item">GPay</div>
+                    <div class="payment-pill-item">CashApp</div>
+                    <div class="payment-pill-item">Bank</div>
+                </div>
+            </div>
+
+        <!-- Botón de Pago -->
+        <a href="https://pay.hotmart.com/L98196050N?off=td49r7xz" 
+           style="display: block; width: 100%; background: #000; color: #fff; border: none; padding: 16px; border-radius: 25px; text-decoration: none; text-align: center; font-weight: 700; margin-bottom: 16px;">
+            Pagar $13 USD
+        </a>
+
+        <!-- Acordeón de otros métodos -->
+        <div style="background: #f9f9f9; border: 1px solid #eaeaea; border-radius: 14px; padding: 14px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: #333;">
+            <span>🏷️ Otros metodos de pago</span>
+            <span style="font-size: 12px; color: #777;">▼</span>
+        </div>
+    </div>
+
+        <!-- Tarjeta Plan Basico -->
+        <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 24px; padding: 24px; margin-bottom: 20px; position: relative; width: 100%;">
+            <div style="position: absolute; top: 24px; right: 24px; background: #111; color: #fff; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 6px; text-transform: uppercase;">Auto Apuntado Extremo</div>
+            
+            <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 4px;">Permanente</h3>
+            <p style="font-size: 13px; color: #666; margin-bottom: 16px;">Prueba corta, todo incluido</p>
+            
+            <div style="font-size: 38px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px;">
+                $18 <span style="font-size: 14px; font-weight: 500; color: #666;">USD</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; font-size: 13px; color: #333;">
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Aimlock 85%</div>
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Aimbot 85%</div>
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Entrega inmediata por Whatsapp</div>
+                <div style="display: flex; align-items: center; gap: 8px; color: #888;">✕ No incluye actualizaciones</div>
+            </div>
+
+            <div style="font-size: 12px; color: #777; margin-bottom: 8px;">Metodos de pago</div>
+            <div class="payment-scroll">
+                <div class="payment-track">
+                    <!-- Grupo 1 -->
+                    <div class="payment-pill-item">Pay</div>
+                    <div class="payment-pill-item">GPay</div>
+                    <div class="payment-pill-item">CashApp</div>
+                    <div class="payment-pill-item">Card</div>
+                    <div class="payment-pill-item">Visa</div>
+                    <div class="payment-pill-item">Mastercard</div>
+                    <!-- Grupo 2 (Duplicado para bucle continuo) -->
+                    <div class="payment-pill-item">Pay</div>
+                    <div class="payment-pill-item">GPay</div>
+                    <div class="payment-pill-item">CashApp</div>
+                    <div class="payment-pill-item">Card</div>
+                    <div class="payment-pill-item">Visa</div>
+                    <div class="payment-pill-item">Mastercard</div>
+
+                </div>
+            </div>
+           <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Jorgenelyb@gmail.com&item_name=JEXE+Regedit&amount=20.00&currency_code=USD" 
+   style="display: block; width: 100%; background: #000000; color: #ffffff; border: none; padding: 16px; border-radius: 25px; text-decoration: none; text-align: center; font-weight: 700; margin-bottom: 16px;">
+    Pagar $18 USD
+</a>
+
+
+            <div style="border: 1px solid #eaeaea; border-radius: 14px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; cursor: pointer;">
+                <span style="display: flex; align-items: center; gap: 8px;">🏷️ Otros metodos de pago</span>
+                <span style="font-size: 12px; color: #777;">▼</span>
+            </div>
+        </div>
+        <!-- Tarjeta Plan 1 Mes (Popular) -->
+        <div style="background: #fff; border: 1px solid #eaeaea; border-radius: 24px; padding: 24px; margin-bottom: 20px; position: relative; width: 100%;">
+            <div style="position: absolute; top: 24px; right: 24px; background: #111; color: #fff; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 6px; text-transform: uppercase;">AUTO APUNTADO PREMIUM</div>
+            
+            <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 4px;">Permanenete</h3>
+            <p style="font-size: 13px; color: #666; margin-bottom: 16px;">El mas elegido</p>
+            
+            <div style="font-size: 38px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px;">
+                $27 <span style="font-size: 14px; font-weight: 500; color: #666;">USD</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; font-size: 13px; color: #333;">
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Aimlock 100%</div>
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Aimbot 100%</div>
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Entrega inmediata por Telegram</div>
+                <div style="display: flex; align-items: center; gap: 8px;">✓ <strong>2 actualizaciones</strong> incluidas durante el mes</div>
+            </div>
+
+            <div style="font-size: 12px; color: #777; margin-bottom: 8px;">Metodos de pago</div>
+            <div class="payment-scroll">
+                <div class="payment-track">
+                    <!-- Grupo 1 -->
+                    <div class="payment-pill-item">Card</div>
+                    <div class="payment-pill-item">Pay</div>
+                    <div class="payment-pill-item">GPay</div>
+                    <div class="payment-pill-item">CashApp</div>
+                    <div class="payment-pill-item">Bank</div>
+                    <!-- Grupo 2 (Duplicado para bucle continuo) -->
+                    <div class="payment-pill-item">Card</div>
+                    <div class="payment-pill-item">Pay</div>
+                    <div class="payment-pill-item">GPay</div>
+                    <div class="payment-pill-item">CashApp</div>
+                    <div class="payment-pill-item">Bank</div>
+                </div>
+            </div>
+
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Jorgenelyb@gmail.com&item_name=JEXE+Regedit&amount=20.00&currency_code=USD" 
+   style="display: block; width: 100%; background: #000000; color: #ffffff; border: none; padding: 16px; border-radius: 25px; text-decoration: none; text-align: center; font-weight: 700; margin-bottom: 16px;">
+    Pagar $27 USD
+</a>
+
+            <div style="border: 1px solid #eaeaea; border-radius: 14px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; cursor: pointer;">
+                <span style="display: flex; align-items: center; gap: 8px;">🏷️ Otros metodos de pago</span>
+                <span style="font-size: 12px; color: #777;">▼</span>
+            </div>
+        </div>
+        <!-- Tarjeta Plan Permanente (Fondo Oscuro) -->
+        <div style="background: #111; color: #fff; border: 1px solid #333; border-radius: 24px; padding: 24px; margin-bottom: 20px; position: relative; width: 100%;">
+            <div style="position: absolute; top: 24px; right: 24px; background: #262626; color: #fff; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 6px; text-transform: uppercase;">AUTO APUNTADO ULTRA</div>
+            
+            <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 4px;">Permanente</h3>
+            <p style="font-size: 13px; color: #999; margin-bottom: 16px;">Acceso de por vida</p>
+            
+            <div style="font-size: 38px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px;">
+                $35 <span style="font-size: 14px; font-weight: 500; color: #999;">USD</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; font-size: 13px; color: #ccc;">
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Aimlock +110%</div>
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Aimbot +110%</div>
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Entrega inmediata por Telegram</div>
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Actualizaciones ilimitadas de por vida</div>
+                <div style="display: flex; align-items: center; gap: 8px;">✓ Acceso a todos los metodos de pago locales</div>
+            </div>
+
+            <div style="font-size: 12px; color: #999; margin-bottom: 8px;">Metodos de pago</div>
+            <div class="payment-scroll">
+                <div class="payment-track">
+                    <!-- Grupo 1 -->
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">PSE</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">SEPA</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">SPEI</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">Pay</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">Efecty</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">OXXO</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">Sancor</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">Servipag</div>
+                    <!-- Grupo 2 (Duplicado para bucle continuo) -->
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">PSE</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">SEPA</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">SPEI</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">Pay</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">Efecty</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">OXXO</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">Sancor</div>
+                    <div style="background: #1a1a1a; border: 1px solid #333; color: #fff;" class="payment-pill-item">Servipag</div>
+                </div>
+            </div>
+
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=Jorgenelyb@gmail.com&item_name=JEXE+Regedit&amount=20.00&currency_code=USD" 
+   style="display: block; width: 100%; background: #fff; color: #111; border: none; padding: 16px; border-radius: 25px; text-decoration: none; text-align: center; font-weight: 700; margin-bottom: 16px;">
+    Pagar $35 USD
+</a>
+
+            <div style="background: #1a1a1a; border: 1px solid #333; border-radius: 14px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; cursor: pointer; color: #fff;">
+                <span style="display: flex; align-items: center; gap: 8px;">🏷️ Otros metodos de pago</span>
+                <span style="font-size: 12px; color: #999;">▼</span>
+            </div>
+        </div>
+
+        <!-- Política de actualizaciones -->
+    <div style="background: #f9f9f9; padding: 20px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #eee;">
+        <h3 style="font-size: 16px; margin-bottom: 10px;">📋 Politica de actualizaciones</h3>
+        <p style="font-size: 13px; color: #555; line-height: 1.5;">
+            El plan de <b>15 días</b> incluye todo lo mencionado pero <b>no incluye actualizaciones</b>. El plan de <b>1 mes</b> incluye <b>2 actualizaciones</b> ademas de todo lo anterior. El plan <b>permanente</b> incluye <b>actualizaciones ilimitadas, de por vida</b>.
+        </p>
+    </div>
+
+    <!-- Aviso importante -->
+    <div style="padding: 20px; border: 1px solid #000; border-radius: 20px; margin-bottom: 20px;">
+        <p style="font-size: 14px; font-weight: 600; line-height: 1.4;">
+            ⚠️ No cierres la pagina desde donde completaste el pago hasta que obtengas el acceso completo. Cerrarla antes de tiempo puede retrasar tu entrega.
+        </p>
+    </div>
+
+    <!-- Soporte por WhatsApp Interactivo -->
+    <div style="padding: 20px; border: 1px solid #eee; border-radius: 20px; margin-bottom: 20px;" id="wa-widget">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <div style="background: #000; color: #fff; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px;">💬</div>
+            <div>
+                <div style="font-weight: 700;">Soporte por WhatsApp</div>
+                <div style="font-size: 12px; color: #777;">Responde unas preguntas y te conectamos directo con JEXE</div>
+            </div>
+        </div>
+
+        <!-- Barra de progreso -->
+        <div style="display: flex; gap: 5px; margin-bottom: 15px;" id="wa-progress">
+            <div style="flex: 1; height: 3px; background: #000; border-radius: 2px;" class="p-bar"></div>
+            <div style="flex: 1; height: 3px; background: #ddd; border-radius: 2px;" class="p-bar"></div>
+            <div style="flex: 1; height: 3px; background: #ddd; border-radius: 2px;" class="p-bar"></div>
+            <div style="flex: 1; height: 3px; background: #ddd; border-radius: 2px;" class="p-bar"></div>
+        </div>
+
+        <!-- PASO 1: Motivo -->
+        <div class="wa-step" id="step-1">
+            <p style="font-weight: 600; margin-bottom: 10px;">¿Cual es el motivo de tu mensaje?</p>
+            <div onclick="selectOption(1, this, 'Quiero mas informacion antes de comprar')" style="border: 1px solid #ddd; padding: 12px; border-radius: 10px; margin-bottom: 10px; cursor: pointer;" class="wa-opt-1">◯ Deseo ver el funcionamiento del producto antes de adquirirlo</div>
+            <div onclick="selectOption(1, this, 'Ya realice mi compra y tengo un problema')" style="border: 1px solid #ddd; padding: 12px; border-radius: 10px; margin-bottom: 20px; cursor: pointer;" class="wa-opt-1">◯ Ya realicé mi compra, por favor necesito ayuda.</div>
+        </div>
+
+        <!-- PASO 2: Plataforma -->
+        <div class="wa-step" id="step-2" style="display: none;">
+            <p style="font-weight: 600; margin-bottom: 10px;">¿Que plataforma usas?</p>
+            <div onclick="selectOption(2, this, 'Android')" style="border: 1px solid #ddd; padding: 12px; border-radius: 10px; margin-bottom: 10px; cursor: pointer;" class="wa-opt-2">◯ Android</div>
+            <div onclick="selectOption(2, this, 'iOS')" style="border: 1px solid #ddd; padding: 12px; border-radius: 10px; margin-bottom: 20px; cursor: pointer;" class="wa-opt-2">◯ iOS</div>
+        </div>
+
+        <!-- PASO 3: Plan -->
+        <div class="wa-step" id="step-3" style="display: none;">
+            <p style="font-weight: 600; margin-bottom: 10px;">¿Que plan te interesa?</p>
+            <div onclick="selectOption(3, this, '15 dias — $6 USD')" style="border: 1px solid #ddd; padding: 12px; border-radius: 10px; margin-bottom: 10px; cursor: pointer;" class="wa-opt-3">◯ 15 dias — $6 USD</div>
+            <div onclick="selectOption(3, this, '1 mes — $10 USD')" style="border: 1px solid #ddd; padding: 12px; border-radius: 10px; margin-bottom: 10px; cursor: pointer;" class="wa-opt-3">◯ 1 mes — $10 USD</div>
+            <div onclick="selectOption(3, this, 'Permanente — $20 USD')" style="border: 1px solid #ddd; padding: 12px; border-radius: 10px; margin-bottom: 10px; cursor: pointer;" class="wa-opt-3">◯ Permanente — $20 USD</div>
+            <div onclick="selectOption(3, this, 'Aun no estoy seguro')" style="border: 1px solid #ddd; padding: 12px; border-radius: 10px; margin-bottom: 20px; cursor: pointer;" class="wa-opt-3">◯ Aun no estoy seguro</div>
+        </div>
+
+        <!-- PASO 4: Pregunta opcional -->
+        <div class="wa-step" id="step-4" style="display: none;">
+            <p style="font-weight: 600; margin-bottom: 10px;">Cuentanos tu pregunta (opcional)</p>
+            <input type="text" id="wa-question" placeholder="Ej: ¿funciona en mi modelo de celular?" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; margin-bottom: 20px; outline: none; font-size: 14px;">
+        </div>
+
+        <!-- PASO 5: Confirmación final -->
+        <div class="wa-step" id="step-5" style="display: none;">
+            <p style="font-weight: 600; margin-bottom: 10px;">Confirma tus respuestas</p>
+            <div style="background: #f9f9f9; padding: 12px; border-radius: 10px; font-size: 13px; margin-bottom: 20px; border: 1px solid #eee;">
+                <div style="display: flex; justify-content: space-y; margin-bottom: 6px;"><span style="color: #777;">Motivo:</span> <strong id="res-motivo" style="text-align: right;">-</strong></div>
+                <div style="display: flex; justify-content: space-y; margin-bottom: 6px;"><span style="color: #777;">Plataforma:</span> <strong id="res-plataforma" style="text-align: right;">-</strong></div>
+                <div style="display: flex; justify-content: space-y;"><span style="color: #777;">Plan:</span> <strong id="res-plan" style="text-align: right;">-</strong></div>
+            </div>
+            <button onclick="sendToWhatsApp()" style="width: 100%; padding: 15px; background: #000; color: #fff; border: none; border-radius: 25px; font-weight: 600; cursor: pointer; margin-bottom: 10px;">💬 Enviar por WhatsApp</button>
+        </div>
+
+        <!-- Botones de navegación (Atrás / Siguiente) -->
+        <div style="display: flex; gap: 10px;" id="wa-nav-buttons">
+            <button onclick="prevStep()" id="btn-atras" style="flex: 1; padding: 14px; background: #f1f1f1; border: none; border-radius: 25px; font-weight: 600; cursor: pointer; display: none;">❮ Atras</button>
+            <button onclick="nextStep()" id="btn-siguiente" style="flex: 1; padding: 14px; background: #ccc; color: #fff; border: none; border-radius: 25px; font-weight: 600; cursor: pointer;" disabled>Siguiente ❯</button>
+        </div>
+    </div>
+    <!-- Entrega inmediata -->
+    <div style="padding: 20px; border: 1px solid #000; border-radius: 20px; margin-bottom: 20px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="font-size: 20px;">⚡</div>
+            <div style="font-weight: 700;">Entrega inmediata, 24/7</div>
+        </div>
+        <p style="font-size: 13px; color: #555; margin-top: 10px;">Sin intermediarios ni tiempos de espera. <b>No cierres la pagina de pago</b> hasta recibir tu acceso completo por Whatsapp, a cualquier hora del dia.</p>
+    </div>
+
+    <!-- Pie de página -->
+    <div style="text-align: center; color: #777; font-size: 12px; margin-top: 40px;">
+        <div style="font-weight: 700; color: #000;">SoyLogan</div>
+        <div>CREADOR DE LA WEB FISCAL007VIP</div>
+    </div>
+
+<!-- PEGA EL SCRIPT AQUÍ ABAJO -->
+<script>
+    let currentStep = 1;
+    let formData = { motivo: '', plataforma: '', plan: '' };
+
+    function selectOption(step, element, value) {
+        const options = document.querySelectorAll('.wa-opt-' + step);
+        options.forEach(opt => {
+            opt.style.background = '#fff';
+            opt.style.color = '#000';
+            opt.style.borderColor = '#ddd';
+            opt.innerHTML = opt.innerHTML.replace('●', '◯');
+        });
+
+        element.style.background = '#000';
+        element.style.color = '#fff';
+        element.style.borderColor = '#000';
+        element.innerHTML = element.innerHTML.replace('◯', '●');
+
+        if(step === 1) formData.motivo = value;
+        if(step === 2) formData.plataforma = value;
+        if(step === 3) formData.plan = value;
+
+        const btnSiguiente = document.getElementById('btn-siguiente');
+        btnSiguiente.style.background = '#000';
+        btnSiguiente.disabled = false;
+    }
+
+    function nextStep() {
+        if(currentStep < 5) {
+            document.getElementById('step-' + currentStep).style.display = 'none';
+            currentStep++;
+            document.getElementById('step-' + currentStep).style.display = 'block';
+            
+            document.getElementById('btn-atras').style.display = 'block';
+
+            if(currentStep === 5) {
+                document.getElementById('wa-nav-buttons').style.display = 'none';
+                document.getElementById('res-motivo').innerText = formData.motivo;
+                document.getElementById('res-plataforma').innerText = formData.plataforma;
+                document.getElementById('res-plan').innerText = formData.plan;
+            } else {
+                // Si vamos al paso 4 (pregunta opcional), habilitamos el botón de inmediato
+                const btnSiguiente = document.getElementById('btn-siguiente');
+                btnSiguiente.style.background = '#000';
+                btnSiguiente.disabled = false;
+            }
+            updateProgress();
+        }
+    }
+    
+
+    function prevStep() {
+        if(currentStep > 1) {
+            document.getElementById('step-' + currentStep).style.display = 'none';
+            currentStep--;
+            document.getElementById('step-' + currentStep).style.display = 'block';
+            
+            document.getElementById('wa-nav-buttons').style.display = 'flex';
+            if(currentStep === 1) {
+                document.getElementById('btn-atras').style.display = 'none';
+            }
+            
+            const btnSiguiente = document.getElementById('btn-siguiente');
+            btnSiguiente.style.background = '#000';
+            btnSiguiente.disabled = false;
+            updateProgress();
+        }
+    }
+
+    function updateProgress() {
+        const bars = document.querySelectorAll('.p-bar');
+        bars.forEach((bar, index) => {
+            if(index < currentStep) {
+                bar.style.background = '#000';
+            } else {
+                bar.style.background = '#ddd';
+            }
+        });
+    }
+
+    function sendToWhatsApp() {
+        const tuNumeroWhatsApp = "+573023518590"; // Reemplaza por tu número real
+        const preguntaExtra = document.getElementById('wa-question').value;
+        
+        let mensaje = `Hola JEXE, vengo desde la web de Regedit.%0A` +
+                      `• Motivo: ${formData.motivo}%0A` +
+                      `• Plataforma: ${formData.plataforma}%0A` +
+                      `• Plan de interés: ${formData.plan}`;
+        
+        if(preguntaExtra) {
+            mensaje += `%0A• Pregunta: ${preguntaExtra}`;
+        }
+
+        window.open(`https://wa.me/${tuNumeroWhatsApp}?text=${mensaje}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
